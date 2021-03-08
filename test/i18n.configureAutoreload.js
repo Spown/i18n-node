@@ -62,11 +62,10 @@ describe('autoreload', function () {
     var testScope;
     var directory = upath.join(__dirname, '/../testlocalesautoprefixed');
   
-    before('will start with empty catalogs', function (done) {
-      var clearError = clear({directory});
+    before('will start with empty catalogs', function () {
+      var clearError = clear({directory}), prom;
       if (clearError) {
-        done(clearError);
-        return;
+        prom = Promise.reject(clearError);
       } else {
         fs.mkdirSync(directory);
         fs.writeFileSync(directory + '/customprefix-de.json', '{}');
@@ -81,12 +80,20 @@ describe('autoreload', function () {
           de: {},
           en: {}
         });
-        setTimeout(done, timeout);
+        //setTimeout(done, timeout);
+        //done()
+        prom = new Promise(function (resolver) {
+          setTimeout(resolver, timeout);
+        });
       }
+      return prom;
     });
   
     it('reloads when a catalog is altered', function(done) {
-      fs.writeFileSync(directory + '/customprefix-de.json', '{"Hello":"Hallo"}');
+      var fstat, fcont='{"Hello":"Hallo"}';
+      fs.writeFileSync(directory + '/customprefix-de.json', fcont);
+      fstat = fs.statSync(directory + '/customprefix-de.json');
+      should.equal(fstat.size, fcont.length)
       setTimeout(done, timeout);
     });
   

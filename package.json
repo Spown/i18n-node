@@ -18,7 +18,7 @@
     "lib": "."
   },
   "dependencies": {
-    "chokidar": "^3.0.2",
+    "chokidar": "^3.5.1",
     "debug": "^4.1.1",
     "make-plural": "^4",
     "math-interval-parser": "^2.0.1",
@@ -31,7 +31,8 @@
     "async": "^2.6.3",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "mocha": "^6.2.0",
+    "fs-extra": "^9",
+    "mocha": "^8.3.1",
     "nyc": "^14.1.1",
     "should": "^13.2.3",
     "sinon": "^7.3.2",
