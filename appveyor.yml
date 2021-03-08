@@ -2,6 +2,7 @@ environment:
   matrix:
     - nodejs_version: "8"
     - nodejs_version: "10"
+    - nodejs_version: "11"
 branches:
   only:
     - master
@@ -9,7 +10,7 @@ branches:
 install:
   - "yarn global add nyc eslint"
   - "yarn"
-build: off
+build: 
 test_script:
   - "yarn test-ci"
 version: "{build}"
