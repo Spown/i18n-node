@@ -18,7 +18,7 @@
     "lib": "."
   },
   "dependencies": {
-    "chokidar": "^3.5.1",
+    "chokidar": "^4.0.0",
     "debug": "^4.1.1",
     "make-plural": "^4",
     "math-interval-parser": "^2.0.1",
